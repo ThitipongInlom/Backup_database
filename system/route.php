@@ -20,4 +20,5 @@ if ($_GET['action'] == 'backup') {
     }
 
     echo json_encode(array('status' => 'success'));
+    
 }
