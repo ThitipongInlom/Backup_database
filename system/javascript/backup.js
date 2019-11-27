@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $(".overlay").hide();
 });
 
 var backup = function backup() {
@@ -24,15 +24,18 @@ var backup = function backup() {
 var Ajax_beforeSend = function Ajax_beforeSend() {
     var Toastr = Set_Toastr();
     Toastr["info"]('กำลังส่งคำสั่ง...');
+    $(".overlay").fadeIn();
 }
 var Ajax_success = function Ajax_success(res) {
     var Toastr = Set_Toastr();
     table_file_zip();
     Toastr["success"]('Backup เสร็จสิ้น');
+    $(".overlay").fadeOut(1000);
 }
 var Ajax_error = function Ajax_error(res) {
     var Toastr = Set_Toastr();
     Toastr["error"]('เกิดความผิดพลาด');
+    $(".overlay").fadeOut(1000);
 }
 
 var table_file_zip = function table_file_zip() {
