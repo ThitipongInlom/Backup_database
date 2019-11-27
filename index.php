@@ -3,6 +3,7 @@
         <link rel="stylesheet" type="text/css" href="plugin/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="plugin/font-awesome/css/all.css">
         <link rel="stylesheet" type="text/css" href="plugin/toastr/build/toastr.css">
+        <link rel="stylesheet" type="text/css" href="plugin/AdminLTE/dist/css/adminlte.css">
     </head> 
     <body>
         <div id="app">
@@ -71,6 +72,7 @@
         </div>
         <script src="plugin/jquery/jquery.js"></script>
         <script src="plugin/toastr/build/toastr.min.js"></script>
+        <script src="plugin/AdminLTE/dist/js/adminlte.js"></script>
         <script src="system/javascript/readjson.js"></script>
         <script src="system/javascript/backup.js"></script>
     </body>
