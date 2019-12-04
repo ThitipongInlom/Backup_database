@@ -1,1 +1,19 @@
-[{"id":"0","name":"\u0e17\u0e14\u0e2a\u0e2d\u0e1a1","host":"localhost","username":"root","password":""},{"id":"1","name":"\u0e17\u0e14\u0e2a\u0e2d\u0e1a2","host":"172.16.1.50","username":"root","password":"itminadthezign"},{"id":"2","name":"\u0e17\u0e14\u0e2a\u0e2d\u0e1a3","host":"","username":"vvf124v","password":"ff"}]
+[{
+    "id": "0",
+    "name": "เครื่องเชิฟเวอร์ที่ 1",
+    "host": "localhost",
+    "username": "root",
+    "password": ""
+}, {
+    "id": "1",
+    "name": "เครื่องเชิฟเวอร์ที่ 2",
+    "host": "172.16.1.50",
+    "username": "root",
+    "password": "itminadthezign"
+}, {
+    "id": "2",
+    "name": "เครื่องเชิฟเวอร์ที่ 3",
+    "host": "",
+    "username": "vvf124v",
+    "password": "ff"
+}]

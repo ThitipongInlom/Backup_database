@@ -34,11 +34,13 @@ var Load_table = function Load_table() {
     $.getJSON("system/route.php?action=path_file_zip", function (result) {
         $.each(result, function (key, value) {
             var table = '<tr>' +
-                '<td><a href="#">' + value.filename + '</a></td>' +
+                '<td>' + value.filename + '</td>' +
                 '<td class="text-right">' + value.sizefile + '</td>' +
+                '<td class="text-center">' + value.action + '</td>' +
                 '<tr>';
             $("#table_file_backup").append(table);
         });
+        $('[data-toggle="tooltip"]').tooltip({"html": true,});
     });
 }
 
@@ -57,22 +59,25 @@ $("input").change(function () {
         contentType: false,
         processData: false,
         data: Data,
-        beforeSend: Ajax_beforeSend,
-        success: Ajax_success,
-        error: Ajax_error,
+        beforeSend: Inputchange_beforeSend,
+        success: Inputchange_success,
+        error: Inputchange_error,
     });
 });
-var Ajax_beforeSend = function Ajax_beforeSend() {
+var Inputchange_beforeSend = function Inputchange_beforeSend() {
     var Toastr = Set_Toastr();
     Toastr["info"]('กำลังส่งคำสั่ง...');
+    $(".overlay").fadeIn();
 }
-var Ajax_success = function Ajax_success(res) {
+var Inputchange_success = function Inputchange_success(res) {
     var Toastr = Set_Toastr();
     Toastr["success"]('บันทึกข้อมูล เสร็จสิ้น');
+    $(".overlay").fadeOut(1000);
 }
-var Ajax_error = function Ajax_error(res) {
+var Inputchange_error = function Inputchange_error(res) {
     var Toastr = Set_Toastr();
     Toastr["error"]('เกิดความผิดพลาด');
+    $(".overlay").fadeOut(1000);
 }
 
 var Set_Toastr = function Set_Toastr() {

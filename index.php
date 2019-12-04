@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mt-3">
                     <div class="col-6">
-                        <div class="card">
+                        <div class="card card-primary card-outline">
                             <div class="card-header text-center mb-1 pb-1">
                                 <h5><i class="fas fa-database"></i> ฐานข้อมูล</h5>
                             </div>
@@ -49,15 +49,16 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="card">
+                        <div class="card card-primary card-outline">
                             <div class="card-header text-center mb-1 pb-1">
                                 <h5><i class="fas fa-file-archive"></i> ไฟล์ Backup</h5>
                             </div>
                             <div class="card-body text-center p-1 m-1">
-                                <table class="table table-sm table-bordered" id="table_file_backup">
+                                <table class="table table-sm table-hover table-bordered" id="table_file_backup">
                                     <tr class="text-center bg-primary">
                                         <td><b>ชื่อไฟล์</b></td>
                                         <td><b>ขนาดไฟล์</b></td>
+                                        <td><b>เครื่องมือ</b></td>
                                     </tr>
                                 </table>
                             </div>
@@ -70,9 +71,11 @@
             </div>
         </div>
         <script src="plugin/jquery/jquery.js"></script>
+        <script src="plugin/bootstrap/dist/js/bootstrap.bundle.js"></script>
         <script src="plugin/toastr/build/toastr.min.js"></script>
         <script src="plugin/AdminLTE/dist/js/adminlte.js"></script>
         <script src="system/javascript/readjson.js"></script>
         <script src="system/javascript/backup.js"></script>
+        <script src="system/javascript/button.js"></script>
     </body>
 </html>
