@@ -3,7 +3,8 @@ include 'backupsql.php';
 include 'server/settingpath.php';
 
 if ($_GET['action'] == 'path_file_zip') {
-    echo SettingPath::Path_File_Zip();
+    $return = SettingPath::Path_File_Zip();
+    echo $return;
 }
 
 if ($_GET['action'] == 'backup') {
@@ -18,7 +19,10 @@ if ($_GET['action'] == 'backup') {
         BackupSql::Backup_zip($name_sql, $name_zip);
         BackupSql::Backup_delete($name_sql);
     }
-
     echo json_encode(array('status' => 'success'));
-    
+}
+
+if ($_GET['action'] == 'delete') {
+    $return = SettingPath::Delete_file_zip($_POST['filename']);
+    echo $return;
 }

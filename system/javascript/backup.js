@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $(".overlay").hide();
 });
 
 var backup = function backup() {
@@ -15,61 +15,45 @@ var backup = function backup() {
         contentType: false,
         processData: false,
         data: Data,
-        beforeSend: Ajax_beforeSend,
-        success: Ajax_success,
-        error: Ajax_error,
+        beforeSend: Backup_beforeSend,
+        success: Backup_success,
+        error: Backup_error,
     });
 }
 
-var Ajax_beforeSend = function Ajax_beforeSend() {
+var Backup_beforeSend = function Backup_beforeSend() {
     var Toastr = Set_Toastr();
     Toastr["info"]('กำลังส่งคำสั่ง...');
+    $(".overlay").fadeIn();
 }
-var Ajax_success = function Ajax_success(res) {
+var Backup_success = function Backup_success(res) {
     var Toastr = Set_Toastr();
-    table_file_zip();
+    Table_file_zip();
     Toastr["success"]('Backup เสร็จสิ้น');
+    $(".overlay").fadeOut(1000);
 }
-var Ajax_error = function Ajax_error(res) {
+var Backup_error = function Backup_error(res) {
     var Toastr = Set_Toastr();
     Toastr["error"]('เกิดความผิดพลาด');
+    $(".overlay").fadeOut(1000);
 }
 
-var table_file_zip = function table_file_zip() {
+var Table_file_zip = function Table_file_zip() {
     var head_table = '<tr class="text-center bg-info">'+
                      '<td><b>ชื่อไฟล์</b></td>'+
                      '<td><b>ขนาดไฟล์</b></td>'+
+                     '<td><b>เครื่องมือ</b></td>'+
                      '</tr>';
     $("#table_file_backup").html(head_table);
     $.getJSON("system/route.php?action=path_file_zip", function (result) {
         $.each(result, function (key, value) {
             var table = '<tr>' +
-                '<td><a href="#">' + value.filename + '</a></td>' +
+                '<td>' + value.filename + '</td>' +
                 '<td class="text-right">' + value.sizefile + '</td>' +
+                '<td class="text-center">' + value.action + '</td>' +
                 '<tr>';
             $("#table_file_backup").append(table);
         });
+        $('[data-toggle="tooltip"]').tooltip({"html": true,});
     });
-}
-
-var Set_Toastr = function Set_Toastr() {
-    // Toastr Options
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "2500",
-        "timeOut": "2500",
-        "extendedTimeOut": "2500",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-    return toastr;
 }
